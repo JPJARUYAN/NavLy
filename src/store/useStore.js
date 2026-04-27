@@ -142,22 +142,77 @@ const defaultBuildings = [
 ]
 
 const defaultPaths = [
-  { id: 1, name: 'Main Entrance Road', type: 'road', points: [[-55, 0, 38], [55, 0, 38]], width: 12, color: '#374151' },
-  { id: 2, name: 'Central Road', type: 'road', points: [[-55, 0, 0], [55, 0, 0]], width: 10, color: '#374151' },
-  { id: 3, name: 'Back Road', type: 'road', points: [[-55, 0, -30], [55, 0, -30]], width: 8, color: '#374151' },
-  { id: 4, name: 'West Road', type: 'road', points: [[-40, 0, -40], [-40, 0, 35]], width: 8, color: '#374151' },
-  { id: 5, name: 'East Road', type: 'road', points: [[40, 0, -40], [40, 0, 35]], width: 8, color: '#374151' },
-  { id: 6, name: 'DPT to Library Path', type: 'path', points: [[-15, 0, -15], [-8, 0, -8]], width: 4, color: '#9CA3AF' },
-  { id: 7, name: 'GET to DPT Path', type: 'path', points: [[-30, 0, -10], [-22, 0, -15]], width: 4, color: '#9CA3AF' },
-  { id: 8, name: 'Admin to Flagpole Path', type: 'path', points: [[0, 0, 22], [0, 0, 25]], width: 5, color: '#9CA3AF' },
-  { id: 9, name: 'Gym to Student Center Path', type: 'path', points: [[-25, 0, 18], [-22, 0, 12]], width: 4, color: '#9CA3AF' },
-  { id: 10, name: 'Library to Cafeteria Path', type: 'path', points: [[8, 0, 2], [15, 0, 8]], width: 4, color: '#9CA3AF' },
-  { id: 11, name: 'BE to Science Path', type: 'path', points: [[18, 0, -15], [25, 0, -8]], width: 4, color: '#9CA3AF' },
-  { id: 12, name: 'Dormitory Access Road', type: 'road', points: [[40, 0, -25], [50, 0, -25]], width: 6, color: '#374151' },
-  { id: 13, name: 'Chapel Walkway', type: 'path', points: [[-5, 0, 25], [-8, 0, 28]], width: 3, color: '#9CA3AF' },
-  { id: 14, name: 'Auditorium Path', type: 'path', points: [[15, 0, 25], [18, 0, 28]], width: 4, color: '#9CA3AF' },
-  { id: 15, name: 'CTE Building Path', type: 'path', points: [[5, 0, -25], [5, 0, -30]], width: 4, color: '#9CA3AF' },
-  { id: 16, name: 'CCS to Alumni Path', type: 'path', points: [[-35, 0, 8], [-35, 0, 20]], width: 4, color: '#9CA3AF' },
+  { id: 1, name: 'Main Entrance Road', type: 'highway', points: [[-60, 0, 40], [60, 0, 40]], width: 14, color: '#1F2937' },
+  { id: 2, name: 'Central Horizontal', type: 'highway', points: [[-60, 0, 0], [60, 0, 0]], width: 12, color: '#1F2937' },
+  { id: 3, name: 'Back Horizontal Road', type: 'road', points: [[-60, 0, -35], [60, 0, -35]], width: 10, color: '#374151' },
+  { id: 4, name: 'Far Back Road', type: 'road', points: [[-60, 0, -50], [60, 0, -50]], width: 8, color: '#374151' },
+  { id: 5, name: 'West Vertical Main', type: 'highway', points: [[-45, 0, -55], [-45, 0, 45]], width: 12, color: '#1F2937' },
+  { id: 6, name: 'West Secondary', type: 'road', points: [[-55, 0, -55], [-55, 0, 45]], width: 8, color: '#374151' },
+  { id: 7, name: 'East Vertical Main', type: 'highway', points: [[45, 0, -55], [45, 0, 45]], width: 12, color: '#1F2937' },
+  { id: 8, name: 'East Secondary', type: 'road', points: [[55, 0, -55], [55, 0, 45]], width: 8, color: '#374151' },
+  { id: 9, name: 'Main Gate to Central', type: 'path', points: [[0, 0, 40], [0, 0, 28]], width: 6, color: '#9CA3AF' },
+  { id: 10, name: 'Gate to West Road', type: 'path', points: [[0, 0, 40], [-30, 0, 40], [-45, 0, 40]], width: 6, color: '#9CA3AF' },
+  { id: 11, name: 'Gate to East Road', type: 'path', points: [[0, 0, 40], [30, 0, 40], [45, 0, 40]], width: 6, color: '#9CA3AF' },
+  { id: 12, name: 'Flagpole Plaza Path', type: 'path', points: [[0, 0, 28], [0, 0, 22]], width: 8, color: '#9CA3AF' },
+  { id: 13, name: 'Administration Entrance', type: 'path', points: [[0, 0, 15], [0, 0, 20]], width: 6, color: '#9CA3AF' },
+  { id: 14, name: 'Admin to West Area', type: 'path', points: [[-5, 0, 20], [-15, 0, 20], [-25, 0, 18]], width: 5, color: '#9CA3AF' },
+  { id: 15, name: 'Admin to East Area', type: 'path', points: [[5, 0, 20], [15, 0, 20], [25, 0, 15]], width: 5, color: '#9CA3AF' },
+  { id: 16, name: 'West Road to DPT', type: 'path', points: [[-45, 0, -10], [-30, 0, -10], [-20, 0, -15], [-15, 0, -20]], width: 5, color: '#9CA3AF' },
+  { id: 17, name: 'DPT to Library', type: 'path', points: [[-8, 0, -15], [-3, 0, -10], [0, 0, -5]], width: 5, color: '#9CA3AF' },
+  { id: 18, name: 'Central to BE Building', type: 'path', points: [[0, 0, 0], [10, 0, -10], [15, 0, -20]], width: 5, color: '#9CA3AF' },
+  { id: 19, name: 'West Road to GET', type: 'path', points: [[-45, 0, -10], [-38, 0, -10], [-30, 0, -10]], width: 5, color: '#9CA3AF' },
+  { id: 20, name: 'West Road to CCS', type: 'path', points: [[-45, 0, 5], [-40, 0, 5], [-35, 0, 5]], width: 5, color: '#9CA3AF' },
+  { id: 21, name: 'CCS to Alumni', type: 'path', points: [[-35, 0, 5], [-35, 0, 15], [-35, 0, 25]], width: 5, color: '#9CA3AF' },
+  { id: 22, name: 'Gym Access Road', type: 'path', points: [[-45, 0, 15], [-35, 0, 15], [-25, 0, 15]], width: 6, color: '#9CA3AF' },
+  { id: 23, name: 'Gym to Student Center', type: 'path', points: [[-25, 0, 15], [-20, 0, 12]], width: 5, color: '#9CA3AF' },
+  { id: 24, name: 'Student Center to Chapel', type: 'path', points: [[-20, 0, 10], [-15, 0, 15], [-10, 0, 25], [-10, 0, 30]], width: 5, color: '#9CA3AF' },
+  { id: 25, name: 'Central to Cafeteria', type: 'path', points: [[10, 0, 5], [15, 0, 8], [20, 0, 10]], width: 6, color: '#9CA3AF' },
+  { id: 26, name: 'East Road to Science', type: 'path', points: [[45, 0, 0], [40, 0, 0], [35, 0, 5]], width: 5, color: '#9CA3AF' },
+  { id: 27, name: 'Science to CHE', type: 'path', points: [[35, 0, 5], [32, 0, -5], [30, 0, -10]], width: 5, color: '#9CA3AF' },
+  { id: 28, name: 'East Road to Dormitory A', type: 'path', points: [[45, 0, -20], [42, 0, -20], [40, 0, -20]], width: 6, color: '#9CA3AF' },
+  { id: 29, name: 'Dorm A to B', type: 'path', points: [[40, 0, -20], [45, 0, -20], [50, 0, -20]], width: 6, color: '#9CA3AF' },
+  { id: 30, name: 'Dorm Access to Swimming', type: 'path', points: [[45, 0, -15], [48, 0, -10], [50, 0, 10]], width: 5, color: '#9CA3AF' },
+  { id: 31, name: 'Back Area CTE', type: 'path', points: [[0, 0, -25], [0, 0, -30], [0, 0, -35]], width: 5, color: '#9CA3AF' },
+  { id: 32, name: 'Central to CTE', type: 'path', points: [[0, 0, -10], [0, 0, -20]], width: 5, color: '#9CA3AF' },
+  { id: 33, name: 'West Road to Alumni', type: 'path', points: [[-45, 0, 25], [-40, 0, 25], [-35, 0, 25]], width: 5, color: '#9CA3AF' },
+  { id: 34, name: 'Parking Access', type: 'path', points: [[45, 0, 30], [40, 0, 30], [35, 0, 30]], width: 6, color: '#9CA3AF' },
+  { id: 35, name: 'Parking to Auditorium', type: 'path', points: [[35, 0, 28], [25, 0, 28], [20, 0, 30]], width: 5, color: '#9CA3AF' },
+  { id: 36, name: 'Basketball Court Path', type: 'path', points: [[-45, 0, 25], [-42, 0, 25], [-40, 0, 25]], width: 5, color: '#9CA3AF' },
+  { id: 37, name: 'Auditorium Main Path', type: 'path', points: [[20, 0, 25], [18, 0, 28]], width: 6, color: '#9CA3AF' },
+  { id: 38, name: 'West Inner Loop', type: 'path', points: [[-30, 0, 0], [-25, 0, -5], [-20, 0, 0], [-25, 0, 5], [-30, 0, 0]], width: 4, color: '#9CA3AF' },
+  { id: 39, name: 'East Inner Loop', type: 'path', points: [[30, 0, 0], [25, 0, -5], [20, 0, 0], [25, 0, 5], [30, 0, 0]], width: 4, color: '#9CA3AF' },
+  { id: 40, name: 'Cross Central West', type: 'path', points: [[-20, 0, -5], [-10, 0, -5], [0, 0, -5]], width: 4, color: '#9CA3AF' },
+  { id: 41, name: 'Cross Central East', type: 'path', points: [[0, 0, 5], [10, 0, 5], [20, 0, 5]], width: 4, color: '#9CA3AF' },
+  { id: 42, name: 'Library to West', type: 'path', points: [[-5, 0, 0], [-10, 0, 0], [-15, 0, 0]], width: 4, color: '#9CA3AF' },
+  { id: 43, name: 'Library to East', type: 'path', points: [[5, 0, 0], [10, 0, 0], [15, 0, 0]], width: 4, color: '#9CA3AF' },
+  
+  { id: 44, name: 'Main Gate Loop', type: 'path', points: [[-10, 0, 40], [-20, 0, 42], [0, 0, 45], [20, 0, 42], [10, 0, 40]], width: 5, color: '#9CA3AF' },
+  { id: 45, name: 'DPT to GET', type: 'path', points: [[-15, 0, -20], [-22, 0, -15], [-30, 0, -10]], width: 5, color: '#9CA3AF' },
+  { id: 46, name: 'BE to CHE', type: 'path', points: [[15, 0, -20], [22, 0, -15], [30, 0, -10]], width: 5, color: '#9CA3AF' },
+  { id: 47, name: 'BE to Science', type: 'path', points: [[15, 0, -20], [25, 0, -10], [35, 0, 5]], width: 5, color: '#9CA3AF' },
+  { id: 48, name: 'Administration to Chapel', type: 'path', points: [[0, 0, 20], [-5, 0, 25], [-10, 0, 30]], width: 5, color: '#9CA3AF' },
+  { id: 49, name: 'Administration to Gym', type: 'path', points: [[0, 0, 20], [-10, 0, 18], [-25, 0, 15]], width: 5, color: '#9CA3AF' },
+  { id: 50, name: 'Student Center Loop', type: 'path', points: [[-20, 0, 10], [-18, 0, 5], [-22, 0, 0], [-25, 0, 5], [-22, 0, 12]], width: 4, color: '#9CA3AF' },
+  { id: 51, name: 'Cafeteria Loop', type: 'path', points: [[20, 0, 10], [22, 0, 5], [18, 0, 0], [25, 0, 5], [22, 0, 12]], width: 4, color: '#9CA3AF' },
+  { id: 52, name: 'LIC to Central Plaza', type: 'path', points: [[0, 0, 0], [0, 0, 8], [0, 0, 15]], width: 6, color: '#9CA3AF' },
+  { id: 53, name: 'CTE Loop', type: 'path', points: [[0, 0, -35], [5, 0, -32], [0, 0, -30], [-5, 0, -32]], width: 4, color: '#9CA3AF' },
+  { id: 54, name: 'Dorm A Loop', type: 'path', points: [[40, 0, -20], [38, 0, -25], [42, 0, -28], [48, 0, -22], [42, 0, -18]], width: 4, color: '#9CA3AF' },
+  { id: 55, name: 'Dorm B Loop', type: 'path', points: [[50, 0, -20], [48, 0, -25], [52, 0, -28], [55, 0, -22], [52, 0, -18]], width: 4, color: '#9CA3AF' },
+  { id: 56, name: 'Alumni to Gym', type: 'path', points: [[-35, 0, 25], [-30, 0, 20], [-25, 0, 15]], width: 5, color: '#9CA3AF' },
+  { id: 57, name: 'Pool to Auditorium', type: 'path', points: [[50, 0, 10], [35, 0, 15], [25, 0, 22], [20, 0, 30]], width: 5, color: '#9CA3AF' },
+  { id: 58, name: 'Parking to Pool', type: 'path', points: [[35, 0, 30], [42, 0, 22], [50, 0, 15]], width: 5, color: '#9CA3AF' },
+  { id: 59, name: 'West Gate Access', type: 'path', points: [[-55, 0, 40], [-55, 0, 25], [-55, 0, 10], [-55, 0, -10], [-55, 0, -30], [-55, 0, -50]], width: 6, color: '#9CA3AF' },
+  { id: 60, name: 'East Gate Access', type: 'path', points: [[55, 0, 40], [55, 0, 25], [55, 0, 10], [55, 0, -10], [55, 0, -30], [55, 0, -50]], width: 6, color: '#9CA3AF' },
+  { id: 61, name: 'Front Walkway', type: 'path', points: [[-55, 0, 40], [-45, 0, 40], [-30, 0, 40], [-15, 0, 40], [0, 0, 40], [15, 0, 40], [30, 0, 40], [45, 0, 40], [55, 0, 40]], width: 5, color: '#D1D5DB' },
+  { id: 62, name: 'Back Walkway', type: 'path', points: [[-55, 0, -50], [-45, 0, -50], [-30, 0, -50], [-15, 0, -50], [0, 0, -50], [15, 0, -50], [30, 0, -50], [45, 0, -50], [55, 0, -50]], width: 5, color: '#D1D5DB' },
+  { id: 63, name: 'Central Green Link', type: 'path', points: [[-30, 0, -5], [-15, 0, -10], [0, 0, -12], [15, 0, -10], [30, 0, -5]], width: 4, color: '#9CA3AF' },
+  { id: 64, name: 'Library Walkway North', type: 'path', points: [[0, 0, -5], [0, 0, -12], [0, 0, -20], [0, 0, -30], [0, 0, -40]], width: 5, color: '#9CA3AF' },
+  { id: 65, name: 'Library Walkway South', type: 'path', points: [[0, 0, 5], [0, 0, 12], [0, 0, 20], [0, 0, 30], [0, 0, 35]], width: 5, color: '#9CA3AF' },
+  { id: 66, name: 'GET to CCS', type: 'path', points: [[-30, 0, -10], [-32, 0, -2], [-35, 0, 5]], width: 5, color: '#9CA3AF' },
+  { id: 67, name: 'Science South Link', type: 'path', points: [[35, 0, 5], [30, 0, 8], [25, 0, 15], [20, 0, 25]], width: 5, color: '#9CA3AF' },
+  { id: 68, name: 'Chapel to Main Gate', type: 'path', points: [[-10, 0, 30], [-5, 0, 35], [0, 0, 40]], width: 5, color: '#9CA3AF' },
+  { id: 69, name: 'Grand Staircase Path', type: 'path', points: [[0, 0, 15], [-5, 0, 12], [-10, 0, 5], [-15, 0, -5], [-20, 0, -15], [-25, 0, -20]], width: 4, color: '#9CA3AF' },
+  { id: 70, name: 'East Staircase Path', type: 'path', points: [[0, 0, 15], [5, 0, 12], [10, 0, 5], [15, 0, -5], [20, 0, -15], [25, 0, -20]], width: 4, color: '#9CA3AF' },
 ]
 
 export const useStore = create(
@@ -167,22 +222,72 @@ export const useStore = create(
       selectedBuilding: null,
       selectedRoom: null,
       viewMode: 'outdoor',
+      firstPersonMode: false,
+      playerPosition: [0, 1.7, 0],
+      playerRotation: 0,
       adminMode: false,
       editingBuilding: null,
       navigationPath: [],
-      markers: defaultBuildings,
-      paths: defaultPaths,
+      markers: [],
+      paths: [],
       currentFloor: 0,
       savedMaps: [],
-      currentMapName: 'UM Digos College Campus',
+      currentMapName: 'Campus',
+      showDecorations: false,
+      lastSavedMap: null,
+      history: [],
+      historyIndex: -1,
+
+      _saveToHistory: () => set((state) => {
+        const newHistory = state.history.slice(0, state.historyIndex + 1)
+        newHistory.push({ markers: state.markers, paths: state.paths })
+        if (newHistory.length > 50) newHistory.shift()
+        return { history: newHistory, historyIndex: newHistory.length - 1 }
+      }),
+
+      undo: () => set((state) => {
+        if (state.historyIndex <= 0) return {}
+        const newIndex = state.historyIndex - 1
+        const prevState = state.history[newIndex]
+        return { 
+          markers: prevState.markers, 
+          paths: prevState.paths,
+          historyIndex: newIndex 
+        }
+      }),
+
+      redo: () => set((state) => {
+        if (state.historyIndex >= state.history.length - 1) return {}
+        const newIndex = state.historyIndex + 1
+        const nextState = state.history[newIndex]
+        return { 
+          markers: nextState.markers, 
+          paths: nextState.paths,
+          historyIndex: newIndex 
+        }
+      }),
+
+      canUndo: () => {
+        const state = get()
+        return state.historyIndex > 0
+      },
+
+      canRedo: () => {
+        const state = get()
+        return state.historyIndex < state.history.length - 1
+      },
 
       setUser: (user) => set({ user }),
       setSelectedBuilding: (building) => set({ selectedBuilding: building, selectedRoom: null, currentFloor: 0 }),
       setSelectedRoom: (room) => set({ selectedRoom: room }),
       setViewMode: (mode) => set({ viewMode: mode }),
+      setFirstPersonMode: (mode) => set({ firstPersonMode: mode }),
+      setPlayerPosition: (pos) => set({ playerPosition: pos }),
+      setPlayerRotation: (rot) => set({ playerRotation: rot }),
       setAdminMode: (mode) => set({ adminMode: mode }),
       setEditingBuilding: (building) => set({ editingBuilding: building }),
       setCurrentFloor: (floor) => set({ currentFloor: floor }),
+      setShowDecorations: (show) => set({ showDecorations: show }),
       
       setNavigationPath: (path) => set({ navigationPath: path }),
       clearNavigation: () => set({ navigationPath: [] }),
@@ -199,24 +304,67 @@ export const useStore = create(
         markers: state.markers.map(b => b.id === id ? { ...b, scale } : b)
       })),
 
-      updateBuilding: (id, updates) => set((state) => ({
-        markers: state.markers.map(b => b.id === id ? { ...b, ...updates } : b)
-      })),
+      updateBuilding: (id, updates) => set((state) => {
+        const newMarkers = state.markers.map(b => b.id === id ? { ...b, ...updates } : b)
+        const newHistory = state.history.slice(0, state.historyIndex + 1)
+        newHistory.push({ markers: newMarkers, paths: state.paths })
+        if (newHistory.length > 50) newHistory.shift()
+        return { 
+          markers: newMarkers,
+          history: newHistory,
+          historyIndex: newHistory.length - 1
+        }
+      }),
 
-      addBuilding: (building) => set((state) => ({
-        markers: [...state.markers, { 
+      toggleBuildingLock: (id) => {
+        set((state) => {
+          const newMarkers = state.markers.map(b => b.id === id ? { ...b, locked: !b.locked } : b)
+          try {
+            localStorage.setItem('navly_markers', JSON.stringify(newMarkers))
+          } catch (e) {}
+          return { markers: newMarkers }
+        })
+      },
+
+      addBuilding: (building) => set((state) => {
+        const newMarkers = [...state.markers, { 
           ...building, 
           id: Date.now(),
           position: building.position || [0, 0, 0],
           rotation: 0,
-          scale: [1, 1, 1]
+          rotationX: 0,
+          rotationZ: 0,
+          scale: [1, 1, 1],
+          locked: false
         }]
-      })),
+        try {
+          localStorage.setItem('navly_markers', JSON.stringify(newMarkers))
+        } catch (e) {}
+        const newHistory = state.history ? state.history.slice(0, state.historyIndex + 1) : []
+        newHistory.push({ markers: newMarkers, paths: state.paths })
+        if (newHistory.length > 50) newHistory.shift()
+        return { 
+          markers: newMarkers,
+          history: newHistory,
+          historyIndex: newHistory.length - 1
+        }
+      }),
 
-      deleteBuilding: (id) => set((state) => ({
-        markers: state.markers.filter(b => b.id !== id),
-        selectedBuilding: state.selectedBuilding?.id === id ? null : state.selectedBuilding
-      })),
+      deleteBuilding: (id) => set((state) => {
+        const newMarkers = state.markers.filter(b => b.id !== id)
+        try {
+          localStorage.setItem('navly_markers', JSON.stringify(newMarkers))
+        } catch (e) {}
+        const newHistory = state.history ? state.history.slice(0, state.historyIndex + 1) : []
+        newHistory.push({ markers: newMarkers, paths: state.paths })
+        if (newHistory.length > 50) newHistory.shift()
+        return { 
+          markers: newMarkers,
+          selectedBuilding: state.selectedBuilding?.id === id ? null : state.selectedBuilding,
+          history: newHistory,
+          historyIndex: newHistory.length - 1
+        }
+      }),
 
       addRoom: (buildingId, floorIndex, room) => set((state) => ({
         markers: state.markers.map(b => {
@@ -293,15 +441,6 @@ export const useStore = create(
         })
       })),
 
-      removePathPoint: (pathId, pointIndex) => set((state) => ({
-        paths: state.paths.map(p => {
-          if (p.id === pathId && p.points.length > 2) {
-            return { ...p, points: p.points.filter((_, i) => i !== pointIndex) }
-          }
-          return p
-        })
-      })),
-
       setSelectedPath: (path) => set({ selectedPath: path }),
 
       saveMap: (name) => {
@@ -312,8 +451,15 @@ export const useStore = create(
           paths: state.paths,
           savedAt: new Date().toISOString()
         }
-        const savedMaps = [...(state.savedMaps || []), mapData]
-        set({ savedMaps, currentMapName: name })
+        const existingIndex = (state.savedMaps || []).findIndex(m => m.name === name)
+        let savedMaps
+        if (existingIndex >= 0) {
+          savedMaps = [...(state.savedMaps || [])]
+          savedMaps[existingIndex] = mapData
+        } else {
+          savedMaps = [...(state.savedMaps || []), mapData]
+        }
+        set({ savedMaps, currentMapName: name, markers: state.markers, paths: state.paths, lastSavedMap: mapData })
         return mapData
       },
 
@@ -321,19 +467,97 @@ export const useStore = create(
         set({ 
           markers: mapData.buildings, 
           paths: mapData.paths,
-          currentMapName: mapData.name 
+          currentMapName: mapData.name,
+          lastSavedMap: mapData,
+          showDecorations: false
         })
       },
 
-      deleteSavedMap: (index) => set((state) => ({
-        savedMaps: state.savedMaps.filter((_, i) => i !== index)
-      })),
+      deleteSavedMap: (index) => set((state) => {
+        const mapToDelete = state.savedMaps[index]
+        const isCurrentMap = state.currentMapName === mapToDelete?.name
+        return {
+          savedMaps: state.savedMaps.filter((_, i) => i !== index),
+          ...(isCurrentMap ? { lastSavedMap: null, markers: [], paths: [], currentMapName: 'New Map' } : {})
+        }
+      }),
 
       resetToDefault: () => set({
-        markers: defaultBuildings,
-        paths: defaultPaths,
-        currentMapName: 'UM Digos College Campus'
+        markers: [...defaultBuildings],
+        paths: [...defaultPaths],
+        currentMapName: 'Campus',
+        showDecorations: false,
+        lastSavedMap: {
+          name: 'Campus',
+          buildings: [...defaultBuildings],
+          paths: [...defaultPaths],
+          savedAt: new Date().toISOString()
+        }
       }),
+
+      loadUMMatinaCampus: () => {
+        const state = get()
+        const mapData = {
+          name: 'Campus',
+          buildings: [...defaultBuildings],
+          paths: [...defaultPaths],
+          savedAt: new Date().toISOString()
+        }
+        const existingIndex = (state.savedMaps || []).findIndex(m => m.name === 'Campus')
+        let savedMaps
+        if (existingIndex >= 0) {
+          savedMaps = [...(state.savedMaps || [])]
+          savedMaps[existingIndex] = mapData
+        } else {
+          savedMaps = [...(state.savedMaps || []), mapData]
+        }
+        set({ 
+          markers: [...defaultBuildings], 
+          paths: [...defaultPaths],
+          currentMapName: 'Campus',
+          lastSavedMap: mapData,
+          savedMaps,
+          showDecorations: false
+        })
+      },
+
+      clearMap: () => {
+        try {
+          localStorage.removeItem('navly_markers')
+          localStorage.removeItem('navly_paths')
+        } catch (e) {}
+        set({
+          markers: [],
+          paths: [],
+          currentMapName: 'New Map',
+          showDecorations: false,
+          lastSavedMap: null
+        })
+      },
+
+      loadFromLocalStorage: () => {
+        try {
+          const savedMarkers = localStorage.getItem('navly_markers')
+          const savedPaths = localStorage.getItem('navly_paths')
+          set({
+            markers: savedMarkers ? JSON.parse(savedMarkers) : [],
+            paths: savedPaths ? JSON.parse(savedPaths) : []
+          })
+        } catch (e) {
+          console.error('Failed to load from localStorage', e)
+        }
+      },
+
+      loadLastSaved: () => {
+        const state = get()
+        if (state.lastSavedMap) {
+          set({
+            markers: state.lastSavedMap.buildings,
+            paths: state.lastSavedMap.paths,
+            currentMapName: state.lastSavedMap.name
+          })
+        }
+      },
 
       events: [
         { id: 1, title: 'Science Fair 2026', building: 'Science Hall', date: '2026-03-15', time: '09:00 AM', description: 'Annual science exhibition featuring student projects' },
@@ -724,8 +948,22 @@ export const useStore = create(
         currentMapName: state.currentMapName,
         accounts: state.accounts,
         students: state.students,
-        instructors: state.instructors
+        instructors: state.instructors,
+        showDecorations: false,
+        lastSavedMap: state.lastSavedMap
       }),
+      onRehydrateStorage: () => (state) => {
+        if (state) {
+          // Always start fresh — no lingering navigation paths or UI state
+          state.showDecorations = false
+          state.navigationPath = []
+          state.adminMode = false
+          state.viewMode = 'outdoor'
+          state.selectedBuilding = null
+          state.selectedRoom = null
+          state.editingBuilding = null
+        }
+      },
     }
   )
 )

@@ -629,7 +629,7 @@ export default function EnrollmentPage({ user }) {
         )}
       </div>
 
-      <div className="tabs" style={{ margin: '0 24px', padding: '8px' }}>
+      <div className="tabs" style={{ margin: '0 16px', padding: '8px' }}>
         <div className={`tab ${activeTab === 'students' ? 'active' : ''}`} style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer' }} onClick={() => setActiveTab('students')}>
           <Users size={16} />
           Students

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
+import { Menu } from 'lucide-react'
 import Sidebar from './components/Sidebar'
 import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
@@ -84,6 +85,41 @@ function App() {
         sidebarOpen={sidebarOpen}
         setSidebarOpen={setSidebarOpen}
       />
+      {isMobile && (
+        <div style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          height: 60,
+          background: 'rgba(15, 23, 42, 0.8)',
+          backdropFilter: 'blur(12px)',
+          borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+          display: 'flex',
+          alignItems: 'center',
+          padding: '0 20px',
+          zIndex: 900,
+        }}>
+          <button 
+            onClick={() => setSidebarOpen(true)}
+            style={{
+              background: 'transparent',
+              border: 'none',
+              color: 'white',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              padding: 8
+            }}
+          >
+            <Menu size={24} />
+          </button>
+          <div style={{ marginLeft: 16, fontWeight: 'bold', fontSize: '1.2rem', color: 'white' }}>
+            Navly
+          </div>
+        </div>
+      )}
       {isMobile && sidebarOpen && (
         <div 
           style={{

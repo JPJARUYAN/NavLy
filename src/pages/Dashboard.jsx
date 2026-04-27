@@ -1,10 +1,9 @@
-import { Building2, Users, BookOpen, Calendar, Clock, MapPin, GraduationCap, UserCheck, DoorOpen, TrendingUp, Bell, ChevronRight, Activity, Sun, Moon, Droplets, Wind, Eye, Edit, Trash2, Plus, Search, Filter, MoreVertical } from 'lucide-react'
+import { Building2, Users, BookOpen, Calendar, Clock, MapPin, GraduationCap, UserCheck, DoorOpen, TrendingUp, ChevronRight, Activity, Sun, Moon, Droplets, Wind, Eye, Edit, Trash2, Plus, Search, Filter, MoreVertical } from 'lucide-react'
 import { useStore } from '../store/useStore'
 import { useState, useEffect } from 'react'
 
 export default function Dashboard({ user }) {
   const markers = useStore((state) => state.markers)
-  const events = useStore((state) => state.events)
   const students = useStore((state) => state.students)
   const instructors = useStore((state) => state.instructors)
   const courses = useStore((state) => state.courses)
@@ -311,7 +310,7 @@ export default function Dashboard({ user }) {
         ))}
       </div>
 
-      <div className="animate-slide" style={{ padding: '24px', display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: 24, opacity: 0, animationDelay: '0.4s' }}>
+      <div className="animate-slide" style={{ padding: '24px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 24, opacity: 0, animationDelay: '0.4s' }}>
         {/* Today's Schedule */}
         <div className="glass-card" style={{ 
           padding: 28, 
@@ -414,62 +413,6 @@ export default function Dashboard({ user }) {
 
         {/* Right Column */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
-          {/* Upcoming Events */}
-          <div className="glass-card" style={{ 
-            padding: 24, 
-            borderRadius: 24,
-            background: 'rgba(255,255,255,0.02)',
-            border: '1px solid rgba(255,255,255,0.05)'
-          }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
-              <h3 style={{ margin: 0, display: 'flex', alignItems: 'center', gap: 10, fontSize: '1.1rem' }}>
-                <Bell size={20} style={{ color: '#f59e0b' }} />
-                Upcoming Events
-              </h3>
-            </div>
-            
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-              {events.slice(0, 3).map((event, i) => (
-                <div key={event.id} style={{ 
-                  padding: 16, 
-                  background: 'rgba(255,255,255,0.03)', 
-                  borderRadius: 14,
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 14,
-                  border: '1px solid rgba(255,255,255,0.03)',
-                  transition: 'all 0.2s',
-                  cursor: 'pointer'
-                }}
-                onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.06)'}
-                onMouseOut={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.03)'}
-                >
-                  <div style={{
-                    width: 44,
-                    height: 44,
-                    borderRadius: 12,
-                    background: `linear-gradient(135deg, ${['#6366f1', '#ec4899', '#10b981'][i % 3]} 0%, ${['#8b5cf6', '#f43f5e', '#059669'][i % 3]} 100%)`,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    flexShrink: 0
-                  }}>
-                    <Calendar size={20} color="#fff" />
-                  </div>
-                  <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ fontWeight: 600, fontSize: '0.95rem', marginBottom: 2, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                      {event.title}
-                    </div>
-                    <div style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.5)' }}>{event.building}</div>
-                  </div>
-                  <div style={{ textAlign: 'right', flexShrink: 0 }}>
-                    <div style={{ fontSize: '0.8rem', fontWeight: 600, color: '#10b981' }}>{event.date}</div>
-                    <div style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.5)' }}>{event.time}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
 
           {/* Campus Buildings */}
           <div className="glass-card" style={{ 

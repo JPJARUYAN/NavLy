@@ -1,5 +1,4 @@
-import { useState } from 'react'
-import { MapPin, LayoutDashboard, Building2, Users, LogOut, PenTool, ClipboardList, Menu, X, Clock, GraduationCap, BookOpen, Settings, Sparkles } from 'lucide-react'
+import { MapPin, LayoutDashboard, Building2, Users, LogOut, PenTool, ClipboardList, Clock, GraduationCap, BookOpen, Settings, Sparkles } from 'lucide-react'
 
 export default function Sidebar({ currentPage, onNavigate, user, onLogout, sidebarOpen, setSidebarOpen }) {
   const role = user?.role
@@ -38,55 +37,31 @@ export default function Sidebar({ currentPage, onNavigate, user, onLogout, sideb
 
   return (
     <>
-      <button 
-        className="mobile-menu-btn"
-        onClick={() => setSidebarOpen(!sidebarOpen)}
-        style={{
-          position: 'fixed',
-          top: 16,
-          left: 16,
-          zIndex: 1001,
-          display: 'none',
-          padding: 12,
-          borderRadius: 12,
-          border: 'none',
-          background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(139, 92, 246, 0.1) 100%)',
-          backdropFilter: 'blur(10px)',
-          color: '#fff',
-          cursor: 'pointer',
-          boxShadow: '0 4px 20px rgba(99, 102, 241, 0.3)'
-        }}
-      >
-        {sidebarOpen ? <X size={24} /> : <Menu size={24} />}
-      </button>
-
       <div className={`glass sidebar ${sidebarOpen ? 'open' : ''}`}>
         <div className="logo">
           <div style={{
-            width: 48,
-            height: 48,
-            background: 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%)',
-            borderRadius: 14,
+            width: 64,
+            height: 64,
+            borderRadius: 18,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            boxShadow: '0 8px 24px rgba(99, 102, 241, 0.4)',
-            animation: 'logoGlow 3s ease-in-out infinite'
+            overflow: 'hidden',
+            background: 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%)',
+            boxShadow: '0 8px 24px rgba(99, 102, 241, 0.5), 0 0 0 1px rgba(255,255,255,0.1) inset',
+            animation: 'sidebarLogoGlow 2s ease-in-out infinite',
+            position: 'relative',
           }}>
-            <svg width="28" height="28" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M32 4C22.06 4 14 12.06 14 22C14 35 32 60 32 60C32 60 50 35 50 22C50 12.06 41.94 4 32 4Z" fill="#6366f1"/>
-              <path d="M32 8C24.82 8 19 13.82 19 21C19 31 32 52 32 52C32 52 45 31 45 21C45 13.82 39.18 8 32 8Z" fill="#8b5cf6"/>
-              <ellipse cx="25" cy="20" rx="3" ry="4" fill="white"/>
-              <ellipse cx="39" cy="20" rx="3" ry="4" fill="white"/>
-              <path d="M24 28C26 30 30 32 32 32C34 32 38 30 40 28" stroke="white" strokeWidth="3" strokeLinecap="round"/>
-              <path d="M22 6H42V14C42 14 42 20 32 20C22 20 22 14 22 14V6Z" fill="#1f2937"/>
-              <path d="M26 2H38L42 14H22L26 2Z" fill="#1f2937"/>
-              <rect x="28" y="0" width="8" height="4" rx="1" fill="#fbbf24"/>
-              <circle cx="32" cy="8" r="2" fill="#fbbf24"/>
-            </svg>
+            <div style={{
+              position: 'absolute',
+              inset: 0,
+              background: 'linear-gradient(135deg, transparent 30%, rgba(255,255,255,0.3) 50%, transparent 70%)',
+              animation: 'shimmer 3s ease-in-out infinite',
+            }} />
+            <img src={`${import.meta.env.BASE_URL}logo.png`} alt="Navly Logo" style={{ width: '80%', height: '80%', objectFit: 'contain' }} />
           </div>
           <div className="logo-text">
-            <h1>NavLy</h1>
+            <h1>Navly</h1>
             <span>Campus Navigator</span>
           </div>
         </div>
@@ -113,9 +88,17 @@ export default function Sidebar({ currentPage, onNavigate, user, onLogout, sideb
         </nav>
 
         <style>{`
-          @keyframes logoGlow {
-            0%, 100% { box-shadow: 0 8px 24px rgba(99, 102, 241, 0.4); }
-            50% { box-shadow: 0 8px 32px rgba(139, 92, 246, 0.6); }
+          @keyframes sidebarLogoGlow {
+            0%, 100% { 
+              box-shadow: 0 8px 24px rgba(99, 102, 241, 0.5), 0 0 0 1px rgba(255,255,255,0.1) inset;
+            }
+            50% { 
+              box-shadow: 0 8px 32px rgba(139, 92, 246, 0.7), 0 0 20px rgba(139, 92, 246, 0.4), 0 0 0 1px rgba(255,255,255,0.15) inset;
+            }
+          }
+          @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            50%, 100% { transform: translateX(100%); }
           }
           @keyframes navSlideIn {
             to { opacity: 1; transform: translateX(0); }

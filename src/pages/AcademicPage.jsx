@@ -160,7 +160,7 @@ export default function AcademicPage() {
         </button>
       </div>
 
-      <div className="tabs" style={{ margin: '0 24px', padding: '8px' }}>
+      <div className="tabs" style={{ margin: '0 16px', padding: '8px' }}>
         {tabs.map((tab) => (
           <div
             key={tab.id}
@@ -169,7 +169,7 @@ export default function AcademicPage() {
             style={{ display: 'flex', alignItems: 'center', gap: 8 }}
           >
             <tab.icon size={16} />
-            {tab.label}
+            <span>{tab.label}</span>
           </div>
         ))}
       </div>

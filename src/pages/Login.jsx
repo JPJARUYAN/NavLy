@@ -260,42 +260,45 @@ export default function Login({ onLogin }) {
       }}>
         <div className="login-logo">
           <div style={{
-            width: 80,
-            height: 80,
+            width: 140,
+            height: 140,
             margin: '0 auto',
-            background: 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%)',
-            borderRadius: 24,
+            borderRadius: 32,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            boxShadow: '0 12px 40px rgba(99, 102, 241, 0.5)',
-            animation: 'pulse 3s ease-in-out infinite'
+            background: 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%)',
+            boxShadow: '0 12px 40px rgba(99, 102, 241, 0.5), 0 0 0 1px rgba(255,255,255,0.15) inset',
+            animation: 'loginLogoGlow 2s ease-in-out infinite',
+            position: 'relative',
+            overflow: 'hidden',
           }}>
-            <svg width="48" height="48" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M32 4C22.06 4 14 12.06 14 22C14 35 32 60 32 60C32 60 50 35 50 22C50 12.06 41.94 4 32 4Z" fill="url(#paint0_linear)"/>
-              <path d="M32 8C24.82 8 19 13.82 19 21C19 31 32 52 32 52C32 52 45 31 45 21C45 13.82 39.18 8 32 8Z" fill="url(#paint1_linear)"/>
-              <ellipse cx="25" cy="20" rx="3" ry="4" fill="white"/>
-              <ellipse cx="39" cy="20" rx="3" ry="4" fill="white"/>
-              <path d="M24 28C26 30 30 32 32 32C34 32 38 30 40 28" stroke="white" strokeWidth="3" strokeLinecap="round"/>
-              <path d="M22 6H42V14C42 14 42 20 32 20C22 20 22 14 22 14V6Z" fill="#1f2937"/>
-              <path d="M26 2H38L42 14H22L26 2Z" fill="#1f2937"/>
-              <rect x="28" y="0" width="8" height="4" rx="1" fill="#fbbf24"/>
-              <circle cx="32" cy="8" r="2" fill="#fbbf24"/>
-              <defs>
-                <linearGradient id="paint0_linear" x1="32" y1="4" x2="32" y2="60" gradientUnits="userSpaceOnUse">
-                  <stop stopColor="#6366f1"/>
-                  <stop offset="1" stopColor="#8b5cf6"/>
-                </linearGradient>
-                <linearGradient id="paint1_linear" x1="32" y1="8" x2="32" y2="52" gradientUnits="userSpaceOnUse">
-                  <stop stopColor="#8b5cf6"/>
-                  <stop offset="1" stopColor="#ec4899"/>
-                </linearGradient>
-              </defs>
-            </svg>
+            <div style={{
+              position: 'absolute',
+              inset: 0,
+              background: 'linear-gradient(135deg, transparent 20%, rgba(255,255,255,0.4) 40%, transparent 60%)',
+              animation: 'loginShimmer 3s ease-in-out infinite',
+            }} />
+            <img src={`${import.meta.env.BASE_URL}logo.png`} alt="Navly Logo" style={{ width: '85%', height: '85%', objectFit: 'contain' }} />
           </div>
-          <h1 style={{ animation: 'slideInUp 0.5s ease-out 0.2s forwards', opacity: 0 }}>NavLy</h1>
+          <h1 style={{ animation: 'slideInUp 0.5s ease-out 0.2s forwards', opacity: 0 }}>Navly</h1>
           <p style={{ animation: 'slideInUp 0.5s ease-out 0.3s forwards', opacity: 0 }}>Campus Navigator</p>
         </div>
+
+        <style>{`
+          @keyframes loginLogoGlow {
+            0%, 100% { 
+              box-shadow: 0 12px 40px rgba(99, 102, 241, 0.5), 0 0 0 1px rgba(255,255,255,0.15) inset;
+            }
+            50% { 
+              box-shadow: 0 12px 50px rgba(139, 92, 246, 0.7), 0 0 30px rgba(139, 92, 246, 0.5), 0 0 0 1px rgba(255,255,255,0.2) inset;
+            }
+          }
+          @keyframes loginShimmer {
+            0% { transform: translateX(-150%); }
+            50%, 100% { transform: translateX(150%); }
+          }
+        `}</style>
 
         {mode === 'login' ? (
           <form onSubmit={handleLogin} style={{ animation: 'slideInUp 0.5s ease-out 0.4s forwards', opacity: 0 }}>
@@ -475,7 +478,7 @@ export default function Login({ onLogin }) {
           <form onSubmit={handleCreateAccount} style={{ animation: 'slideInUp 0.5s ease-out forwards', opacity: 0 }}>
             <div style={{ marginBottom: 20 }}>
               <label style={{ display: 'block', marginBottom: 10, fontSize: '0.9rem', color: 'var(--text-muted)' }}>Account Type</label>
-              <div style={{ display: 'flex', gap: 10 }}>
+              <div className="account-type-selector" style={{ gap: 10 }}>
                 <button
                   type="button"
                   className={`btn ${role === 'user' ? 'btn-primary' : 'btn-secondary'}`}
@@ -575,7 +578,7 @@ export default function Login({ onLogin }) {
 
             <h4 style={{ fontSize: '0.9rem', fontWeight: 600, marginBottom: 12, color: '#6366f1' }}>Personal Information</h4>
             
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, marginBottom: 10 }}>
+            <div className="form-row" style={{ gap: 10, marginBottom: 10 }}>
               <div>
                 <input
                   type="text"
@@ -596,7 +599,7 @@ export default function Login({ onLogin }) {
               </div>
             </div>
             
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, marginBottom: 10 }}>
+            <div className="form-row" style={{ gap: 10, marginBottom: 10 }}>
               <div>
                 <input
                   type="text"

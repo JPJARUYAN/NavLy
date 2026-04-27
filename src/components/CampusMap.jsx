@@ -35,7 +35,6 @@ export default function CampusMap({
       >
         <Suspense fallback={null}>
           <color attach="background" args={['#87CEEB']} />
-          <fog attach="fog" args={['#87CEEB', 80, 200]} />
           
           <ambientLight intensity={0.5} color="#ffffff" />
           <directionalLight 
